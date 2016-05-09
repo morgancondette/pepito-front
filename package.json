@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/morgancondette/pepito-front/issues"
   },
-  "homepage": "https://github.com/morgancondette/pepito-front#readme"
+  "homepage": "https://github.com/morgancondette/pepito-front#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
