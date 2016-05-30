@@ -1,0 +1,15 @@
+<h1>{{$ctrl.pageTitle}}</h1>
+<div class="gallery-grid-card" ng-repeat="collection in $ctrl.collections" flex-xs="" flex-gt-xs="25" layout="row">
+  <md-card>
+    <a href="/#/gallery/{{collection.slug}}"><img ng-src="{{collection.cover}}" class="md-card-image" alt="Washed Out"></a>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{collection.title}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button><md-checkbox ng-model="collection.visible" aria-label="Visible?">Visible</md-checkbox></md-button>
+      <md-button><md-checkbox ng-model="collection.homefeatured" aria-label="Finished?">Accueil</md-checkbox></md-button>
+    </md-card-actions>
+  </md-card>
+</div>Tes

@@ -1,5 +1,6 @@
 var gulp          = require('gulp'),
-    notify        = require('gulp-notify')
+    notify        = require('gulp-notify'),
+    sass          = require('gulp-sass'),
     eslint        = require('gulp-eslint'),
     browserify    = require('browserify'),
     ngAnnotate    = require('browserify-ngannotate'),
@@ -14,11 +15,13 @@ var gulp          = require('gulp'),
 
 var config = {
   inputViewFile:  './src/index.html',
-  inputAppFile:   './src/js/pepito.js',
+  inputAppFile:   './src/js/app.js',
+  inputSassFile:  './src/js/app.scss',
   outputAppFile:  'main.js',
   outputAppDir:   './build/',
   viewFiles:      './src/js/**/*.html',
-  jsFiles:        './src/js/**/*.js'
+  jsFiles:        './src/js/**/*.js',
+  sassFiles:      './src/js/**/*.scss'
 }
 
 var interceptErrors = function(error) {
@@ -54,6 +57,15 @@ gulp.task('html', function() {
       .pipe(gulp.dest(config.outputAppDir));
 });
 
+// css task
+gulp.task('css', function() {
+  return gulp.src(config.inputSassFile)
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', interceptErrors))
+    .pipe(sourcemaps.write('/maps'))
+    .pipe(gulp.dest(config.outputAppDir));
+});
+
 // views task
 gulp.task('views', function() {
   return gulp.src(config.viewFiles)
@@ -69,11 +81,11 @@ gulp.task('views', function() {
 // minified JS/CSS files into the dist/ folder
 gulp.task('build', ['html', 'browserify'], function() {
   var html = gulp.src("build/index.html")
-                 .pipe(gulp.dest('./dist/'));
+                 .pipe(gulp.dest(config.outputAppDir));
 
   var js = gulp.src("build/main.js")
                .pipe(uglify())
-               .pipe(gulp.dest('./dist/'));
+               .pipe(gulp.dest(config.outputAppDir));
 
   return merge(html,js);
 });
@@ -93,4 +105,5 @@ gulp.task('default', ['html', 'browserify'], function() {
   gulp.watch(config.inputViewFile, ['html']);
   gulp.watch(config.viewFiles, ['views']);
   gulp.watch(config.jsFiles, ['browserify']);
+  gulp.watch(config.sassFiles, ['css']);
 });
