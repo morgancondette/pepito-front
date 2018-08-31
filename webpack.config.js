@@ -37,12 +37,11 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: [
-          !isProduction && {
+          {
             loader: 'babel-loader',
             options: { plugins: ['react-hot-loader/babel'] }
-          },
-          'ts-loader'
-        ].filter(Boolean)
+          }
+        ]
       },
       // css
       {
