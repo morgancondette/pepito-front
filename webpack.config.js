@@ -27,9 +27,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     mainFields: ['module', 'browser', 'main'],
-    alias: {
-      app: path.resolve(__dirname, 'src/app/')
-    }
+    modules: ['node_modules', sourcePath]
   },
   module: {
     rules: [
