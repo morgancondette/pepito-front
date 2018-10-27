@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { Route, Switch } from 'react-router';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
 // Pages
-import Home from 'pages/home-page';
+import HomePage from 'pages/home-page';
 
 export default hot(module)(() => (
-  <Switch>
-    <Route path="/" component={Home} />
-  </Switch>
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/:name" component={HomePage} />
+    </Switch>
+  </BrowserRouter>
 ));

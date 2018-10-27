@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class DefaultTemplate extends React.PureComponent<{}> {
+class DefaultTemplate extends React.PureComponent {
   public render(): JSX.Element {
     return (
       <div>
