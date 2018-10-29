@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import DefaultTemplate from 'templates/default-template';
 
-class HomePage extends React.PureComponent {
+class GalleryPage extends React.PureComponent {
   public render(): JSX.Element {
     return (
       <DefaultTemplate>
-        <h1>Home page</h1>
+        <h1>Gallery page</h1>
       </DefaultTemplate>
     );
   }
 }
 
-export default HomePage;
+export default GalleryPage;
