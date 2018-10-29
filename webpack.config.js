@@ -43,7 +43,7 @@ module.exports = {
       },
       // css
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
           {
@@ -59,6 +59,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
+              syntax: 'postcss-scss',
               plugins: [
                 require('postcss-import')({ addDependencyTo: webpack }),
                 require('postcss-url')(),
@@ -72,7 +73,8 @@ module.exports = {
                 })
               ]
             }
-          }
+          },
+          'sass-loader'
         ]
       },
       // static assets

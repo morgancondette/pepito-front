@@ -1,5 +1,9 @@
 import * as React from 'react';
+
+import LayoutTemplate from 'templates/layout-template';
 import SideMenu from 'containers/side-menu';
+
+import * as s from './style.scss';
 
 const stubMenu = [
   {
@@ -17,10 +21,10 @@ const stubMenu = [
 class DefaultTemplate extends React.PureComponent {
   public render(): JSX.Element {
     return (
-      <div>
-        <SideMenu sideMenuList={stubMenu} />
-        {this.props.children}
-      </div>
+      <LayoutTemplate>
+        <SideMenu sideMenuList={stubMenu} className={s.side_menu} />
+        <div className={s.workspace}>{this.props.children}</div>
+      </LayoutTemplate>
     );
   }
 }

@@ -1,0 +1,11 @@
+$sidebar_width: 120px;
+
+.side_menu {
+  width: $sidebar_width;
+}
+
+.workspace {
+  width: calc(100% - $sidebar_width);
+  margin-left: $sidebar_width;
+  padding: 20px;
+}
