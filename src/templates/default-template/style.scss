@@ -1,7 +1,8 @@
-$sidebar_width: 120px;
+$sidebar_width: 250px;
 
 .side_menu {
   width: $sidebar_width;
+  border-right-color: #f8f8f8 !important;
 }
 
 .workspace {

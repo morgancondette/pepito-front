@@ -6,7 +6,7 @@ class HomePage extends React.PureComponent {
   public render(): JSX.Element {
     return (
       <DefaultTemplate>
-        <h1>Home page</h1>
+        <h1>Dashboard page</h1>
       </DefaultTemplate>
     );
   }

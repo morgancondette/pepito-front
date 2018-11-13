@@ -4,7 +4,7 @@ const path = require('path');
 // variables
 const isProduction = process.argv.indexOf('-p') >= 0 || process.env.NODE_ENV === 'production';
 const sourcePath = path.join(__dirname, './src');
-const outPath = path.join(__dirname, './dist');
+const outPath = path.join(__dirname, './build');
 
 // plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -31,6 +31,10 @@ module.exports = {
   },
   module: {
     rules: [
+      // static assets
+      { test: /\.html$/, use: 'html-loader' },
+      { test: /\.(a?png|svg)$/, use: 'url-loader?limit=10000' },
+      { test: /\.(jpe?g|gif|bmp|mp3|mp4|ogg|wav|eot|ttf|woff|woff2)$/, use: 'file-loader' },
       // .ts, .tsx
       {
         test: /\.tsx?$/,
@@ -62,7 +66,9 @@ module.exports = {
               syntax: 'postcss-scss',
               plugins: [
                 require('postcss-import')({ addDependencyTo: webpack }),
-                require('postcss-url')(),
+                require('postcss-url')({
+                  url: 'inline'
+                }),
                 require('postcss-preset-env')({
                   /* use stage 2 features (defaults) */
                   stage: 2
@@ -76,11 +82,7 @@ module.exports = {
           },
           'sass-loader'
         ]
-      },
-      // static assets
-      { test: /\.html$/, use: 'html-loader' },
-      { test: /\.(a?png|svg)$/, use: 'url-loader?limit=10000' },
-      { test: /\.(jpe?g|gif|bmp|mp3|mp4|ogg|wav|eot|ttf|woff|woff2)$/, use: 'file-loader' }
+      }
     ]
   },
   optimization: {

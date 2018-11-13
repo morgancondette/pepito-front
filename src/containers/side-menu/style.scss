@@ -1,0 +1,36 @@
+.side_menu {
+  .side_menu_link {
+    color: #bababa;
+    font-weight: bold;
+    font-size: 14px;
+
+    &__active {
+      color: #444444;
+
+      &:before {
+        content: '';
+        width: 3px;
+        height: 37px;
+        background: #ec585c;
+        position: absolute;
+        left: 0;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .side_menu_item_gutters {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .side_menu_item {
+    margin-bottom: 5px;
+    fill: red !important;
+    i {
+      margin-right: 12px;
+      path {
+        fill: red;
+      }
+    }
+  }
+}
