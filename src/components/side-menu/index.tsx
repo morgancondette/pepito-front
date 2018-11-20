@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Drawer, List, ListItem } from '@material-ui/core';
+import { Drawer, List, ListItem, ListItemText } from '@material-ui/core';
+import classnames from 'classnames';
 
 import FontIcon from 'components/font-icon';
 
-import * as s from './style.scss';
-
-interface ISideMenuStylesProps {
-  paper: string;
+interface ISideMenuClassesProps {
+  paper?: string;
 }
 
 interface ISideMenuListItem {
@@ -19,22 +18,21 @@ interface ISideMenuListItem {
 
 interface ISideMenuProps extends React.HTMLAttributes<{}> {
   sideMenuList: ISideMenuListItem[];
-  styles: ISideMenuStylesProps;
+  classes?: ISideMenuClassesProps;
 }
 
 type TSideMenuProps = ISideMenuProps;
 
 class SideMenu extends React.PureComponent<TSideMenuProps> {
   public render(): JSX.Element {
-    const { sideMenuList, styles } = this.props;
+    const { sideMenuList, classes } = this.props;
 
     return (
       <Drawer
         anchor="left"
         variant="permanent"
-        className={s.side_menu}
         classes={{
-          paper: styles.paper
+          paper: classnames(classes && classes.paper)
         }}
       >
         <List>
@@ -48,15 +46,11 @@ class SideMenu extends React.PureComponent<TSideMenuProps> {
 
   private renderSideMenuListItem(sideMenuListItem: ISideMenuListItem): JSX.Element {
     return (
-      <NavLink
-        exact={true}
-        key={sideMenuListItem.id}
-        className={s.side_menu_link}
-        activeClassName={s.side_menu_link__active}
-        to={sideMenuListItem.link}
-      >
-        <ListItem classes={{ gutters: s.side_menu_item_gutters, root: s.side_menu_item }}>
-          <FontIcon iconName={sideMenuListItem.icon} /> {sideMenuListItem.labelKey}
+      <NavLink exact={true} key={sideMenuListItem.id} to={sideMenuListItem.link}>
+        <ListItem button>
+          <ListItemText>
+            <FontIcon iconName={sideMenuListItem.icon} /> {sideMenuListItem.labelKey}
+          </ListItemText>
         </ListItem>
       </NavLink>
     );
