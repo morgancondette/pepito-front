@@ -1,19 +1,13 @@
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Drawer, List, ListItem, ListItemText } from '@material-ui/core';
+import { Drawer } from '@material-ui/core';
 import classnames from 'classnames';
 
-import FontIcon from 'components/font-icon';
+import * as s from './style.scss';
+import { ISideMenuListItem } from './model';
+import SideMenuList from './components/side-menu-list';
 
 interface ISideMenuClassesProps {
   paper?: string;
-}
-
-interface ISideMenuListItem {
-  id: string;
-  labelKey: string;
-  icon: string;
-  link: string;
 }
 
 interface ISideMenuProps extends React.HTMLAttributes<{}> {
@@ -32,27 +26,11 @@ class SideMenu extends React.PureComponent<TSideMenuProps> {
         anchor="left"
         variant="permanent"
         classes={{
-          paper: classnames(classes && classes.paper)
+          paper: classnames(s.side_menu, classes && classes.paper)
         }}
       >
-        <List>
-          {sideMenuList.map((sideMenuListItem: ISideMenuListItem) =>
-            this.renderSideMenuListItem(sideMenuListItem)
-          )}
-        </List>
+        <SideMenuList sideMenuList={sideMenuList} />
       </Drawer>
-    );
-  }
-
-  private renderSideMenuListItem(sideMenuListItem: ISideMenuListItem): JSX.Element {
-    return (
-      <NavLink exact={true} key={sideMenuListItem.id} to={sideMenuListItem.link}>
-        <ListItem button>
-          <ListItemText>
-            <FontIcon iconName={sideMenuListItem.icon} /> {sideMenuListItem.labelKey}
-          </ListItemText>
-        </ListItem>
-      </NavLink>
     );
   }
 }
