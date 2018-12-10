@@ -26,3 +26,6 @@ npm-debug.log
 # sass
 .sass-cache/
 *.css.map
+
+# env
+.env*

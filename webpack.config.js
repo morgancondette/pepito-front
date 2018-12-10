@@ -11,6 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TSLintPlugin = require('tslint-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   context: sourcePath,
@@ -115,6 +116,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
+    new Dotenv(),
     new TSLintPlugin({
       files: ['./src/**/*.tsx', './src/**/*.ts']
     })
