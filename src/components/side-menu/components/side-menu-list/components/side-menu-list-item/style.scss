@@ -1,18 +1,17 @@
-$side_menu_list_item_background_color: #6482a1;
-
 button.side_menu_list_item_button {
-  background-color: $side_menu_list_item_background_color;
+  background-color: var(--color-dark-grey);
   width: 35px;
   height: 35px;
   margin: 12px 7px 0;
-  color: white;
+  color: var(--color-lightest-grey);
   box-shadow: none;
   opacity: 0.5;
+  cursor: pointer;
   font-size: 17px;
 
   &:hover {
     opacity: 1;
-    background-color: $side_menu_list_item_background_color;
+    background-color: var(--color-dark-grey);
     transition: opacity 0.25s ease-in-out;
     -moz-transition: opacity 0.25s ease-in-out;
     -webkit-transition: opacity 0.25s ease-in-out;

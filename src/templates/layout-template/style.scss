@@ -4,3 +4,35 @@ a,
 a:visited {
   text-decoration: none;
 }
+
+:root {
+  // grey
+  --color-darkest-grey: #2c2c2c;
+  --color-dark-grey: #626262;
+  --color-light-grey: #ebebeb;
+  --color-lightest-grey: #fafafa;
+
+  // red
+  --color-dark-red: #933432;
+  --color-base-red: #f55753;
+  --color-light-red: #f77975;
+  --color-lightest-red: #fddddd;
+
+  // blue
+  --color-dark-blue: #2b6a94;
+  --color-base-blue: #48b0f7;
+  --color-light-blue: #6dc0f9;
+  --color-lightest-blue: #daeffd;
+
+  // greeb
+  --color-dark-green: #0a7c71;
+  --color-base-green: #10cfbd;
+  --color-light-green: #40d9ca;
+  --color-lightest-green: #cff5f2;
+
+  // yellow
+  --color-dark-yellow: #957d32;
+  --color-base-yellow: #f8d053;
+  --color-light-yellow: #f9d975;
+  --color-lightest-yellow: #fef6dd;
+}
